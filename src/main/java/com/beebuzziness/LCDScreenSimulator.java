@@ -6,12 +6,17 @@ public class LCDScreenSimulator {
 
 	public static void main(String[] args) {
 		if (args.length < 1) {
-			System.out.print("USAGE: argument 1 is needed");
+			System.out.print("USAGE: argument 1 is needed\n");
+			return;
+		}
+
+		if (args.length > 1) {
+			System.out.print("USAGE: Only one argument is accepted. Too much argument\n");
 			return;
 		}
 
 		if (!StringUtils.isNumeric(args[0])) {
-			System.out.print("USAGE: argument 1 must be an integer");
+			System.out.print("USAGE: argument 1 must be an integer\n");
 			return;
 		}
 
@@ -29,7 +34,7 @@ public class LCDScreenSimulator {
 		StringBuilder lcdLine3 = new StringBuilder();
 
 		for (int i = 0; i < inputNumberAsString.length(); i++) {
-			int inputDigit = Integer.parseInt(inputNumberAsString.substring(i, i + 1));
+			int inputDigit = Character.getNumericValue(inputNumberAsString.charAt(i));
 			String[] inputDigitRepresentation = LCDDigit.getLcdDigitRepresentation(inputDigit);
 			lcdLine1.append(inputDigitRepresentation[0]);
 			lcdLine2.append(inputDigitRepresentation[1]);
