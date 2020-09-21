@@ -13,4 +13,9 @@ public class LCDScreenSimulatorTest {
 		assertEquals(" _ \n| |\n|_|", lcdScreenSimulator.getLCDOutput("0"));
 	}
 
+	@Test
+	public void WhenInputNumberIs1_LCDOutputMustBe1LCDRepresentation() {
+		assertEquals("   \n  |\n  |", lcdScreenSimulator.getLCDOutput("1"));
+	}
+
 }

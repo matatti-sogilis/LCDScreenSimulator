@@ -7,7 +7,12 @@ public class LCDScreenSimulator {
 	}
 
 	public String getLCDOutput(String number) {
-		return " _ \n| |\n|_|";
+		if ("0".equals(number)) {
+			return " _ \n| |\n|_|";
+		} else {
+			return "   \n  |\n  |";
+		}
+
 	}
 
 }
