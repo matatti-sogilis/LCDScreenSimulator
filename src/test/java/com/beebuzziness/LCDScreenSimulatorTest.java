@@ -2,11 +2,29 @@ package com.beebuzziness;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class LCDScreenSimulatorTest {
 
 	private LCDScreenSimulator lcdScreenSimulator = new LCDScreenSimulator();
+
+	private ByteArrayOutputStream testOut;
+
+	@BeforeEach
+	public void setUpOutput() {
+		testOut = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(testOut));
+	}
+
+	@AfterAll
+	public static void restoreOutput() {
+		System.setOut(System.out);
+	}
 
 	@Test
 	public void WhenInputNumberIs0_LCDOutputMustBe0LCDRepresentation() {
@@ -66,6 +84,18 @@ public class LCDScreenSimulatorTest {
 	@Test
 	public void WhenInputNumberIs910_LCDOutputMustBe910CDRepresentation() {
 		assertEquals(" _       _ \n|_|   | | |\n  |   | |_|", lcdScreenSimulator.getLCDOutput(910));
+	}
+
+	@Test
+	public void WhenInputMainIsMissing_ReturnErrorMessage() {
+		LCDScreenSimulator.main(new String[] {});
+		assertEquals("USAGE: argument 1 is needed", testOut.toString());
+	}
+
+	@Test
+	public void WhenInputMainIsNotInteger_ReturnErrorMessage() {
+		LCDScreenSimulator.main(new String[] { "ABC" });
+		assertEquals("USAGE: argument 1 must be an integer", testOut.toString());
 	}
 
 }

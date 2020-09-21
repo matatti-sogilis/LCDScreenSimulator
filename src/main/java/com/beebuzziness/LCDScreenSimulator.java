@@ -1,9 +1,23 @@
 package com.beebuzziness;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class LCDScreenSimulator {
 
 	public static void main(String[] args) {
-		System.out.println("Hello World!");
+		if (args.length < 1) {
+			System.out.print("USAGE: argument 1 is needed");
+			return;
+		}
+
+		if (!StringUtils.isNumeric(args[0])) {
+			System.out.print("USAGE: argument 1 must be an integer");
+			return;
+		}
+
+		int inputNumber = Integer.parseInt(args[0]);
+		LCDScreenSimulator lcdScreenSimulator = new LCDScreenSimulator();
+		System.out.println(lcdScreenSimulator.getLCDOutput(inputNumber));
 	}
 
 	public String getLCDOutput(int inputNumber) {
