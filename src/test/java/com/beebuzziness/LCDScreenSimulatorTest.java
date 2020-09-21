@@ -18,4 +18,44 @@ public class LCDScreenSimulatorTest {
 		assertEquals("   \n  |\n  |", lcdScreenSimulator.getLCDOutput("1"));
 	}
 
+	@Test
+	public void WhenInputNumberIs2_LCDOutputMustBe2CDRepresentation() {
+		assertEquals(" _ \n _|\n|_ ", lcdScreenSimulator.getLCDOutput("2"));
+	}
+
+	@Test
+	public void WhenInputNumberIs3_LCDOutputMustBe3CDRepresentation() {
+		assertEquals(" _ \n _|\n _|", lcdScreenSimulator.getLCDOutput("3"));
+	}
+
+	@Test
+	public void WhenInputNumberIs4_LCDOutputMustBe4CDRepresentation() {
+		assertEquals("   \n|_|\n  |", lcdScreenSimulator.getLCDOutput("4"));
+	}
+
+	@Test
+	public void WhenInputNumberIs5_LCDOutputMustBe5CDRepresentation() {
+		assertEquals(" _ \n|_ \n _|", lcdScreenSimulator.getLCDOutput("5"));
+	}
+
+	@Test
+	public void WhenInputNumberIs6_LCDOutputMustBe6CDRepresentation() {
+		assertEquals(" _ \n|_ \n|_|", lcdScreenSimulator.getLCDOutput("6"));
+	}
+
+	@Test
+	public void WhenInputNumberIs7_LCDOutputMustBe7CDRepresentation() {
+		assertEquals(" _ \n  |\n  |", lcdScreenSimulator.getLCDOutput("7"));
+	}
+
+	@Test
+	public void WhenInputNumberIs8_LCDOutputMustBe8CDRepresentation() {
+		assertEquals(" _ \n|_|\n|_|", lcdScreenSimulator.getLCDOutput("8"));
+	}
+
+	@Test
+	public void WhenInputNumberIs9_LCDOutputMustBe9CDRepresentation() {
+		assertEquals(" _ \n|_|\n  |", lcdScreenSimulator.getLCDOutput("9"));
+	}
+
 }

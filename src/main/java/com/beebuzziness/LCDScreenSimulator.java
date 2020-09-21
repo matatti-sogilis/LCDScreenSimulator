@@ -7,12 +7,16 @@ public class LCDScreenSimulator {
 	}
 
 	public String getLCDOutput(String number) {
-		if ("0".equals(number)) {
-			return " _ \n| |\n|_|";
-		} else {
-			return "   \n  |\n  |";
-		}
+		StringBuilder output = new StringBuilder();
+		String[] inputDigit = LCDDigit.getLcdDigitRepresentation(Integer.parseInt(number));
 
+		output.append(inputDigit[0]);
+		output.append("\n");
+		output.append(inputDigit[1]);
+		output.append("\n");
+		output.append(inputDigit[2]);
+
+		return output.toString();
 	}
 
 }
