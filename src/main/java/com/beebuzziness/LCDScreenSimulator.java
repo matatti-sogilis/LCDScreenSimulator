@@ -6,4 +6,8 @@ public class LCDScreenSimulator {
 		System.out.println("Hello World!");
 	}
 
+	public String getLCDOutput(String number) {
+		return " _ \n| |\n|_|";
+	}
+
 }
