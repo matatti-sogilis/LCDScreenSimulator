@@ -63,4 +63,9 @@ public class LCDScreenSimulatorTest {
 		assertEquals("     _ \n  | | |\n  | |_|", lcdScreenSimulator.getLCDOutput(10));
 	}
 
+	@Test
+	public void WhenInputNumberIs910_LCDOutputMustBe910CDRepresentation() {
+		assertEquals(" _       _ \n|_|   | | |\n  |   | |_|", lcdScreenSimulator.getLCDOutput(910));
+	}
+
 }
