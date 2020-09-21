@@ -6,15 +6,33 @@ public class LCDScreenSimulator {
 		System.out.println("Hello World!");
 	}
 
-	public String getLCDOutput(String number) {
-		StringBuilder output = new StringBuilder();
-		String[] inputDigit = LCDDigit.getLcdDigitRepresentation(Integer.parseInt(number));
+	public String getLCDOutput(int inputNumber) {
+		String inputNumberAsString = Integer.toString(inputNumber);
 
-		output.append(inputDigit[0]);
+		StringBuilder output = new StringBuilder();
+		StringBuilder lcdLine1 = new StringBuilder();
+		StringBuilder lcdLine2 = new StringBuilder();
+		StringBuilder lcdLine3 = new StringBuilder();
+
+		for (int i = 0; i < inputNumberAsString.length(); i++) {
+			int inputDigit = Integer.parseInt(inputNumberAsString.substring(i, i + 1));
+			String[] inputDigitRepresentation = LCDDigit.getLcdDigitRepresentation(inputDigit);
+			lcdLine1.append(inputDigitRepresentation[0]);
+			lcdLine2.append(inputDigitRepresentation[1]);
+			lcdLine3.append(inputDigitRepresentation[2]);
+
+			if (i != inputNumberAsString.length() - 1) {
+				lcdLine1.append(" ");
+				lcdLine2.append(" ");
+				lcdLine3.append(" ");
+			}
+		}
+
+		output.append(lcdLine1);
 		output.append("\n");
-		output.append(inputDigit[1]);
+		output.append(lcdLine2);
 		output.append("\n");
-		output.append(inputDigit[2]);
+		output.append(lcdLine3);
 
 		return output.toString();
 	}
